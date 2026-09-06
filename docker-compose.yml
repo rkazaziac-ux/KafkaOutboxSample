@@ -99,7 +99,7 @@ services:
     environment:
       ConnectionStrings__SqlServer: "Server=sqlserver,1433;Database=KafkaOutbox;User Id=sa;Password=Your_strong_password123;TrustServerCertificate=True"
       Kafka__BootstrapServers: kafka:9092
-      ASPNETCORE_URLS: http://+:8081
+      ASPNETCORE_URLS: http://0.0.0.0:8081
     ports:
       - "8081:8081"
 

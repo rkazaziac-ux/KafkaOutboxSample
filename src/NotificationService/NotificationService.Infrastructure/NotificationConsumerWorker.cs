@@ -18,6 +18,7 @@ public sealed class NotificationConsumerWorker(IServiceScopeFactory scopeFactory
         using var consumer = new ConsumerBuilder<string, string>(config).Build();
         using var producer = new ProducerBuilder<string, string>(new ProducerConfig { BootstrapServers = kafka.Value.BootstrapServers }).Build();
         consumer.Subscribe(kafka.Value.Topics.OrderCreated);
+        await Task.Yield();
         while (!stoppingToken.IsCancellationRequested)
         {
             try
