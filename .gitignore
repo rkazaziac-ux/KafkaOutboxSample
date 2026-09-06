@@ -1,0 +1,37 @@
+# .NET build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Docker local data
+**/docker-data/
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+
+# NuGet packages
+packages/
+*.nupkg
+
+# Test results
+TestResults/
+
+# JetBrains
+.idea/

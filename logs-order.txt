@@ -1,0 +1,200 @@
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:31 ERR] Failed executing DbCommand (3ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:31 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:36 ERR] Failed executing DbCommand (2ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:36 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:41 ERR] Failed executing DbCommand (1ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:41 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:46 ERR] Failed executing DbCommand (7ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:46 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:51 ERR] Failed executing DbCommand (2ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:51 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:04:56 ERR] Failed executing DbCommand (2ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:04:56 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16
+order-api-1  | [06:05:01 ERR] Failed executing DbCommand (12ms) [Parameters=[@__cutoff_0='?' (DbType = DateTime2)], CommandType='Text', CommandTimeout='30']
+order-api-1  | UPDATE [o]
+order-api-1  | SET [o].[Status] = N'Pending'
+order-api-1  | FROM [OutboxMessages] AS [o]
+order-api-1  | WHERE [o].[Status] = N'Processing' AND [o].[ProcessedOnUtc] IS NULL AND [o].[OccurredOnUtc] < @__cutoff_0
+order-api-1  | [06:05:01 ERR] Outbox batch failed
+order-api-1  | Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'OutboxMessages'.
+order-api-1  |    at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+order-api-1  |    at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+order-api-1  |    at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__210_1(IAsyncResult result)
+order-api-1  |    at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+order-api-1  | --- End of stack trace from previous location ---
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+order-api-1  |    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ProcessBatchAsync(CancellationToken cancellationToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 29
+order-api-1  |    at OrderService.Infrastructure.OutboxWorker.ExecuteAsync(CancellationToken stoppingToken) in /src/src/OrderService/OrderService.Infrastructure/OutboxWorker.cs:line 16
+order-api-1  | ClientConnectionId:805b531a-0120-4e49-95bc-a1283bff27be
+order-api-1  | Error Number:208,State:1,Class:16

@@ -1,0 +1,108 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: kafka-outbox-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Your_strong_password123"
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "timeout 2 bash -c '</dev/tcp/127.0.0.1/1433' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  kafka:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.3.8
+    container_name: kafka-outbox-kafka
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp
+      - "1"
+      - --memory
+      - 768M
+      - --reserve-memory
+      - 0M
+      - --node-id
+      - "0"
+      - --check=false
+      - --kafka-addr
+      - internal://0.0.0.0:9092,external://0.0.0.0:29092
+      - --advertise-kafka-addr
+      - internal://kafka:9092,external://localhost:29092
+    ports:
+      - "29092:29092"
+      - "9644:9644"
+    volumes:
+      - kafka-data:/var/lib/redpanda/data
+    healthcheck:
+      test: ["CMD-SHELL", "rpk cluster health --api-urls localhost:9644 | grep -q Healthy"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  kafka-init:
+    image: docker.redpanda.com/redpandadata/redpanda:v24.3.8
+    depends_on:
+      kafka:
+        condition: service_healthy
+    entrypoint: ["/bin/sh", "-c"]
+    command: >-
+      "for topic in orders.created orders.created.retry orders.created.dlq; do
+      rpk topic describe $$topic --brokers kafka:9092 >/dev/null 2>&1 ||
+      rpk topic create $$topic --brokers kafka:9092; done"
+    restart: "no"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-outbox-kafka-ui
+    depends_on:
+      kafka:
+        condition: service_healthy
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+    ports:
+      - "8088:8080"
+
+  order-api:
+    build:
+      context: .
+      dockerfile: src/OrderService/OrderService.API/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      kafka-init:
+        condition: service_completed_successfully
+    environment:
+      ConnectionStrings__SqlServer: "Server=sqlserver,1433;Database=KafkaOutbox;User Id=sa;Password=Your_strong_password123;TrustServerCertificate=True"
+      Kafka__BootstrapServers: kafka:9092
+      ASPNETCORE_URLS: http://+:8080
+    ports:
+      - "8080:8080"
+
+  notification-api:
+    build:
+      context: .
+      dockerfile: src/NotificationService/NotificationService.API/Dockerfile
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+      kafka-init:
+        condition: service_completed_successfully
+    environment:
+      ConnectionStrings__SqlServer: "Server=sqlserver,1433;Database=KafkaOutbox;User Id=sa;Password=Your_strong_password123;TrustServerCertificate=True"
+      Kafka__BootstrapServers: kafka:9092
+      ASPNETCORE_URLS: http://+:8081
+    ports:
+      - "8081:8081"
+
+volumes:
+  sqlserver-data:
+  kafka-data:
