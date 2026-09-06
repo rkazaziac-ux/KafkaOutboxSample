@@ -24,6 +24,7 @@ public sealed class InventoryConsumerWorker(
 
         using var consumer = new ConsumerBuilder<string, string>(config).Build();
         consumer.Subscribe(kafka.Value.Topics.OrderCreated);
+        await Task.Yield();
 
         try
         {
