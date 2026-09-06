@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/Common/Common.csproj" />
+    <Project Path="src/BuildingBlocks/Contracts/Contracts.csproj" />
+    <Project Path="src/BuildingBlocks/Messaging/Messaging.csproj" />
+  </Folder>
+  <Folder Name="/src/NotificationService/">
+    <Project Path="src/NotificationService/NotificationService.API/NotificationService.API.csproj" />
+    <Project Path="src/NotificationService/NotificationService.Application/NotificationService.Application.csproj" />
+    <Project Path="src/NotificationService/NotificationService.Infrastructure/NotificationService.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/OrderService/">
+    <Project Path="src/OrderService/OrderService.API/OrderService.API.csproj" />
+    <Project Path="src/OrderService/OrderService.Application/OrderService.Application.csproj" />
+    <Project Path="src/OrderService/OrderService.Domain/OrderService.Domain.csproj" />
+    <Project Path="src/OrderService/OrderService.Infrastructure/OrderService.Infrastructure.csproj" />
+  </Folder>
+</Solution>

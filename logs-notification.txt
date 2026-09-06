@@ -1,0 +1,13 @@
+notification-api-1  | [06:03:39 INF] Executed DbCommand (39ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+notification-api-1  | SELECT 1
+notification-api-1  | [06:03:40 INF] Executed DbCommand (78ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+notification-api-1  | SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+notification-api-1  | [06:03:40 INF] Executed DbCommand (11ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+notification-api-1  | SELECT 1
+notification-api-1  | [06:03:40 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+notification-api-1  | SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+notification-api-1  | [06:03:40 INF] Executed DbCommand (67ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+notification-api-1  | SELECT [MigrationId], [ProductVersion]
+notification-api-1  | FROM [__EFMigrationsHistory]
+notification-api-1  | ORDER BY [MigrationId];
+notification-api-1  | [06:03:40 INF] No migrations were applied. The database is already up to date.
