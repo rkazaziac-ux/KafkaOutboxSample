@@ -11,6 +11,7 @@ builder.Services.Configure<OutboxOptions>(builder.Configuration.GetSection("Outb
 builder.Services.AddDbContext<InboxDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddScoped<INotificationHandler, NotificationHandler>();
 builder.Services.AddHostedService<NotificationConsumerWorker>();
+builder.Services.AddHostedService<InventoryConsumerWorker>();
 
 // Add services to the container.
 

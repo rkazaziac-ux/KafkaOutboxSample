@@ -3,8 +3,16 @@ namespace KafkaOutboxSample.Common;
 public sealed class KafkaOptions
 {
     public string BootstrapServers { get; set; } = "localhost:29092";
-    public string GroupId { get; set; } = "notification-service";
     public KafkaTopics Topics { get; set; } = new();
+    public KafkaConsumerOptions Notification { get; set; } = new() { GroupId = "notification-service" };
+    public KafkaConsumerOptions Inventory { get; set; } = new() { GroupId = "inventory-service" };
+}
+
+public sealed class KafkaConsumerOptions
+{
+    public string GroupId { get; set; } = string.Empty;
+    public string AutoOffsetReset { get; set; } = "Earliest";
+    public bool EnableAutoCommit { get; set; }
 }
 
 public sealed class KafkaTopics

@@ -14,7 +14,8 @@ public sealed class NotificationConsumerWorker(IServiceScopeFactory scopeFactory
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        var config = new ConsumerConfig { BootstrapServers = kafka.Value.BootstrapServers, GroupId = kafka.Value.GroupId, AutoOffsetReset = AutoOffsetReset.Earliest, EnableAutoCommit = false };
+        var options = kafka.Value.Notification;
+        var config = new ConsumerConfig { BootstrapServers = kafka.Value.BootstrapServers, GroupId = options.GroupId, AutoOffsetReset = ParseAutoOffsetReset(options.AutoOffsetReset), EnableAutoCommit = options.EnableAutoCommit };
         using var consumer = new ConsumerBuilder<string, string>(config).Build();
         using var producer = new ProducerBuilder<string, string>(new ProducerConfig { BootstrapServers = kafka.Value.BootstrapServers }).Build();
         consumer.Subscribe(kafka.Value.Topics.OrderCreated);
@@ -32,6 +33,8 @@ public sealed class NotificationConsumerWorker(IServiceScopeFactory scopeFactory
         }
         consumer.Close();
     }
+
+    private static AutoOffsetReset ParseAutoOffsetReset(string value) => Enum.TryParse<AutoOffsetReset>(value, true, out var result) ? result : AutoOffsetReset.Earliest;
 
     private async Task ProcessWithRetryAsync(string payload, string topic, IProducer<string, string> producer, CancellationToken cancellationToken)
     {
