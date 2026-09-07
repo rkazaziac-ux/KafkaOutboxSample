@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Application;
 
-namespace OrderService.API;
+namespace OrderService.API.Controllers;
 
 [ApiController, Route("api/orders")]
 public sealed class OrdersController(IOrderService service) : ControllerBase

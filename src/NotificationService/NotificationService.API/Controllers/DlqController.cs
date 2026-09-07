@@ -3,7 +3,7 @@ using KafkaOutboxSample.Common;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace NotificationService.API;
+namespace NotificationService.API.Controllers;
 
 [ApiController, Route("api/dlq")]
 public sealed class DlqController(IOptions<KafkaOptions> options) : ControllerBase
